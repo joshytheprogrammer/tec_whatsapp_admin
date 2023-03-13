@@ -1,52 +1,32 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card
-        title="Free"
-        icon="github"
-      >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">
-          Every
-        </b> component is responsive
-      </card>
-
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">
-          Vue.js
-        </a> and <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
-    </div>
-  </section>
+  <b-tabs size="is-medium" position="is-centered" type="is-boxed" v-model="tab">
+    <b-tab-item label="Categories" icon="basket-outline">
+      <Categories />
+    </b-tab-item>
+    <b-tab-item label="Products" icon="store">
+      <Products />
+    </b-tab-item>
+  </b-tabs>
 </template>
 
 <script>
-import Card from '~/components/Card'
-
+import Products from "~/components/Home/Products.vue"
+import Categories from "~/components/Home/Categories.vue"
 export default {
-  name: 'IndexPage',
   components: {
-    Card
-  }
+    Products,
+    Categories
+  },
+  data() {
+    return {
+      tab: 0
+    }
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+div {
+  padding: 1rem;
+}
+</style>
