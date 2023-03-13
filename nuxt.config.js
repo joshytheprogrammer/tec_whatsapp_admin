@@ -44,6 +44,36 @@ export default {
     '@nuxtjs/pwa',
   ],
 
+  firebase: {
+    config: {
+      apiKey: "AIzaSyB_12vmPpaaQML1lIOaImXSitHQ3Zc-ZpA",
+      authDomain: "tec-whatsapp.firebaseapp.com",
+      projectId: "tec-whatsapp",
+      storageBucket: "tec-whatsapp.appspot.com",
+      messagingSenderId: "846055937478",
+      appId: "1:846055937478:web:0ed41d16d2827fb8d0cec7",
+      measurementId: "G-P6EF19DGHW"
+
+    },
+    services: {
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChangedAction',
+          subscribeManually: false
+        },
+        emulatorPort: undefined,
+      },
+      firestore: true,
+      functions: false,
+      storage: true,
+      database: false,
+      messaging: false,
+      performance: false,
+      analytics: false,
+      remoteConfig: false
+    }
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
@@ -53,7 +83,16 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      name: 'Admin Portal',
+      short_name: 'TEC',
+      description: 'Manage the TEC whatsapp website',
+      lang: 'en',
+      background_color: '#09001e',
+      theme_color: '#09001e'
+    },
+    icon: {
+      fileName: 'icon.png',
+      sizes: [64, 120, 144, 12, 192, 384, 512]
     }
   },
 
