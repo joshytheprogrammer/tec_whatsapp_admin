@@ -2,7 +2,7 @@
   <b-navbar fixed-top>
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <span class="title has-text-primary">Neas Fashion</span>
+        <span class="title has-text-primary">TEC Whatsapp</span>
       </b-navbar-item>
     </template>
     <template #end>
