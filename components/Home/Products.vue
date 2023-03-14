@@ -1,5 +1,6 @@
 <template>
   <section>
+    <!-- :paginated="isPaginated" -->
     <b-table
       :loading="loading"
       :data="data"
@@ -17,6 +18,8 @@
       aria-previous-label="Previous page"
       aria-page-label="Page"
       aria-current-label="Current page"
+      sticky-header
+      height = "400px"
       :page-input="hasInput"
       :pagination-order="paginationOrder"
       :page-input-position="inputPosition"
@@ -26,11 +29,11 @@
         {{ props.row.id }}
       </b-table-column>
 
-      <b-table-column field="name" label="Name" sortable v-slot="props">
+      <b-table-column field="name" label="Name" width="450" sortable v-slot="props">
         {{ props.row.name }}
       </b-table-column>
 
-      <b-table-column field="image" label="Image" v-slot="props">
+      <b-table-column field="image" label="Image" width="150" v-slot="props">
         <img :src="props.row.image" :alt="props.row.name + ' image'">
       </b-table-column>
 
@@ -38,9 +41,10 @@
         {{ props.row.price }}
       </b-table-column>
 
-      <b-table-column field="actions" label="Slug" centered v-slot="props">
+      <b-table-column field="actions" label="Actions" centered v-slot="props">
         <div class="actions">
           <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/shop/'+props.row.slug">View</a></span>
+          <span><NuxtLink :to="'/edit/product/'+props.row.id">Edit</NuxtLink></span>
         </div>
       </b-table-column>
 
@@ -62,7 +66,7 @@ export default {
       sortIcon: 'arrow-up',
       sortIconSize: 'is-small',
       currentPage: 1,
-      perPage: 3,
+      perPage: 5,
       hasInput: false,
       paginationOrder: '',
       inputPosition: '',

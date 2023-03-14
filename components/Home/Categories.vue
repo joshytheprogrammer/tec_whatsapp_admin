@@ -34,9 +34,10 @@
         <img :src="props.row.image" :alt="props.row.name + ' image'">
       </b-table-column>
 
-      <b-table-column field="actions" label="Slug" centered v-slot="props">
+      <b-table-column field="actions" label="Actions" centered v-slot="props">
         <div class="actions">
           <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/#'+props.row.id">View</a></span>
+          <span><NuxtLink :to="'/edit/category/'+props.row.id">Edit</NuxtLink></span>
         </div>
       </b-table-column>
       <!-- '#'item.id+ -->
