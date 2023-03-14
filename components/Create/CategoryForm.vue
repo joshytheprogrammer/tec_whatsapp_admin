@@ -48,9 +48,12 @@ export default {
         return
       }
 
+      let slug = this.generateSlug()
+
       await this.$fire.firestore.collection('categories').add({
         name: this.category.name,
-        image: this.category.image,
+        slug: slug,
+        thumbnail: this.category.image,
       })
       .then((docRef) => {
         this.$buefy.toast.open({
@@ -115,6 +118,14 @@ export default {
       return true
 
     },
+    generateSlug() {
+      let name = this.category.name.replace(/\s/g, "-")
+
+      name = name.toLowerCase()
+
+      return name
+    }
+
   }
 }
 </script>

@@ -173,6 +173,8 @@ export default {
     generateSlug(id, name) {
       name = name + " " + id
 
+      name = name.toLowerCase()
+
       name = name.replace(/\s/g, "-")
 
       return name
