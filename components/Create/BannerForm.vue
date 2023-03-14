@@ -3,7 +3,14 @@
     <h1 class="subtitle is-size-3">Create new category</h1>
     <form @submit.prevent="submit" class="form">
       <b-field label="Name">
-        <b-input v-model="category.name" placeholder="Enter the product name" validation-message="Only letters, numbers and apostrophes are allowed" pattern="^[a-zA-Z 0-9 ']*$" :disabled="loading" required></b-input>
+        <b-input v-model="banner.name" placeholder="Enter the product name" validation-message="Only letters, numbers and apostrophes are allowed" pattern="^[a-zA-Z 0-9 ']*$" :disabled="loading" required></b-input>
+      </b-field>
+      <b-field label="Device">
+        <b-radio v-model="isMobile"
+          name="device"
+          native-value="true">
+          Flint
+        </b-radio>
       </b-field>
 
       <b-field label="Image">
@@ -29,9 +36,10 @@
 export default {
   data() {
     return {
-      category: {
+      banner: {
         name: '',
         image: '',
+        isMobile: false
       },
       file: {},
       loading: false,
@@ -85,7 +93,7 @@ export default {
         return
       }
 
-      let ref = await this.$fire.storage.ref().child('categories/'+this.file.name)
+      let ref = await this.$fire.storage.ref().child('Banners/'+this.file.name)
 
       await ref.put(this.file)
       .then(() => {
@@ -105,7 +113,7 @@ export default {
 
       await ref.getDownloadURL()
       .then((url) => {
-        this.category.image = url
+        this.banner.image = url
       })
       .catch((error) => {
         this.$buefy.toast.open({
