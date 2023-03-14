@@ -1,18 +1,22 @@
 <template>
   <section>
-    <h1 class="subtitle is-size-3">Create new category</h1>
+    <h1 class="subtitle is-size-3">Create new banner</h1>
     <form @submit.prevent="submit" class="form">
       <b-field label="Name">
         <b-input v-model="banner.name" placeholder="Enter the product name" validation-message="Only letters, numbers and apostrophes are allowed" pattern="^[a-zA-Z 0-9 ']*$" :disabled="loading" required></b-input>
       </b-field>
       <b-field label="Device">
-        <b-radio v-model="isMobile"
+        <b-radio v-model="banner.isMobile"
           name="device"
           native-value="true">
-          Flint
+          Mobile
+        </b-radio>
+        <b-radio v-model="banner.isMobile"
+          name="device"
+          native-value="false">
+          Desktop
         </b-radio>
       </b-field>
-
       <b-field label="Image">
         <b-field class="file is-primary" :class="{'has-name': !!file}">
           <b-upload v-model="file" accept=".jpg, .JPG, .png, .PNG, .jpeg, .JPEG" class="file-label" validation-message="Only jpg, jpeg and png are allowed" :disabled="loading" required>
@@ -26,7 +30,6 @@
           </b-upload>
         </b-field>
       </b-field>
-
       <b-button native-type="submit" type="is-primary" :loading="loading">Submit</b-button>
     </form>
   </section>
@@ -56,12 +59,11 @@ export default {
         return
       }
 
-      let slug = this.generateSlug()
-
-      await this.$fire.firestore.collection('categories').add({
-        name: this.category.name,
-        slug: slug,
-        thumbnail: this.category.image,
+      await this.$fire.firestore.collection('banners').add({
+        name: this.banner.name,
+        imgLink: this.banner.image,
+        isMobile: this.banner.isMobile,
+        active: true,
       })
       .then((docRef) => {
         this.$buefy.toast.open({
@@ -126,13 +128,6 @@ export default {
       return true
 
     },
-    generateSlug() {
-      let name = this.category.name.replace(/\s/g, "-")
-
-      name = name.toLowerCase()
-
-      return name
-    }
 
   }
 }
