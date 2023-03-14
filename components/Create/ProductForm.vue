@@ -96,14 +96,14 @@ export default {
       await this.$fire.firestore.collection('products').doc(id).set({
         name: this.product.name,
         price: this.product.price,
-        image: this.product.image,
+        thumbnail: this.product.image,
         slug: slug,
         categories: this.product.categories
       })
-      .then((docRef) => {
+      .then(() => {
         this.$buefy.toast.open({
           duration: 10000,
-          message: `Document created successfully with ID - ${id} -  <a style="color: white;" href="https://neasfashion.demo.joshytheprogrammer.com/shop/${slug}" target="_blank" >View</a> `,
+          message: `Document created successfully with ID - ${id} -  <a style="color: white;" href="https://tec.demo.joshytheprogrammer.com/shop/${slug}" target="_blank" >View</a> `,
           type: 'is-success'
         })
 
