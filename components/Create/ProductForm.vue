@@ -82,15 +82,18 @@ export default {
       this.loading = true
 
       // Upload file and check if all is well
-      if(!(await this.upload())) {
-        this.loading = false
-        return
-      }
+      // if(!(await this.upload())) {
+      //   this.loading = false
+      //   return
+      // }
 
-      // Generate product slug using random numbers
-      let slug = await this.generateSlug()
+      // Generate product id using random numbers
+      let id = this.generateID()
 
-      await this.$fire.firestore.collection('products').doc(this.generateSlug).set({
+      // Generate product slug
+      let slug = this.generateSlug(id, this.product.name)
+
+      await this.$fire.firestore.collection('products').doc(id).set({
         name: this.product.name,
         price: this.product.price,
         image: this.product.image,
@@ -160,12 +163,17 @@ export default {
       return true
 
     },
-    generateSlug() {
+    generateID() {
       let name = uuid.v4()
 
-      name = name.replace(/\s/g, "-")
-
       name = name.slice(0, 8)
+
+      return name
+    },
+    generateSlug(id, name) {
+      name = name + " " + id
+
+      name = name.replace(/\s/g, "-")
 
       return name
     }
