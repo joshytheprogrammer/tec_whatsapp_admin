@@ -82,7 +82,7 @@ export default {
         return
       }
 
-      let ref = await this.$fire.storage.ref().child('Categories/'+this.file.name)
+      let ref = await this.$fire.storage.ref().child('categories/'+this.file.name)
 
       await ref.put(this.file)
       .then(() => {

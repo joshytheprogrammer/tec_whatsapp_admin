@@ -78,8 +78,6 @@ export default {
   },
   methods: {
     async submit() {
-      // https://neasfashion.demo.joshytheprogrammer.com/shop/ http://localhost:3000/shop/
-
       // Start Loading animation
       this.loading = true
 
@@ -92,7 +90,7 @@ export default {
       // Generate product slug using random numbers
       let slug = await this.generateSlug()
 
-      await this.$fire.firestore.collection('products').set({
+      await this.$fire.firestore.collection('products').doc(this.generateSlug).set({
         name: this.product.name,
         price: this.product.price,
         image: this.product.image,
