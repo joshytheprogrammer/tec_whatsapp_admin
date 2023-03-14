@@ -38,7 +38,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
-    'nuxt-buefy',
+    ['nuxt-buefy', { css: true, }],
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
@@ -105,7 +105,6 @@ export default {
   styleResources: {
     scss: [
       '@/assets/scss/app.scss',
-      '@/assets/scss/mixins.scss'
     ],
     hoistUseStatements:  true,
   },
