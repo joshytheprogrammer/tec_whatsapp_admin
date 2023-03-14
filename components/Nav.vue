@@ -16,6 +16,9 @@
         <b-navbar-item href="/create/category">
           Category
         </b-navbar-item>
+        <b-navbar-item href="/create/category">
+          Banner
+        </b-navbar-item>
       </b-navbar-dropdown>
       <b-navbar-item href="/#" @click.prevent="logout">
         Logout
