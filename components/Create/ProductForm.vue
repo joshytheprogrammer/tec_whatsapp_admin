@@ -82,10 +82,10 @@ export default {
       this.loading = true
 
       // Upload file and check if all is well
-      // if(!(await this.upload())) {
-      //   this.loading = false
-      //   return
-      // }
+      if(!(await this.upload())) {
+        this.loading = false
+        return
+      }
 
       // Generate product id using random numbers
       let id = this.generateID()
@@ -103,7 +103,7 @@ export default {
       .then((docRef) => {
         this.$buefy.toast.open({
           duration: 10000,
-          message: `Document created successfully with ID - ${docRef.id} -  <a style="color: white;" href="https://neasfashion.demo.joshytheprogrammer.com/shop/${slug}" target="_blank" >View</a> `,
+          message: `Document created successfully with ID - ${id} -  <a style="color: white;" href="https://neasfashion.demo.joshytheprogrammer.com/shop/${slug}" target="_blank" >View</a> `,
           type: 'is-success'
         })
 
