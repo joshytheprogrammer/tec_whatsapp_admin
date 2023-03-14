@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login is-text-primary">
     <h1 class="subtitle is-size-3">Login</h1>
     <form @submit.prevent="login">
       <b-field label="Email">
@@ -10,7 +10,7 @@
         <b-input type="password" :disabled="loading" v-model="user.password" required password-reveal></b-input>
       </b-field>
 
-      <b-button native-type="submit" type="is-primary" :loading="loading">Submit</b-button>
+      <b-button class="has-background-primary" native-type="submit" type="is-link" :loading="loading">Submit</b-button>
     </form>
   </div>
 </template>
