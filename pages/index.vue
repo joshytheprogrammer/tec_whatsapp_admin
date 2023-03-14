@@ -8,7 +8,7 @@
         <Categories />
       </b-tab-item>
       <b-tab-item label="Banners">
-
+        <Banners />
       </b-tab-item>
     </b-tabs>
   </section>
@@ -17,10 +17,12 @@
 <script>
 import Products from "~/components/Home/Products.vue"
 import Categories from "~/components/Home/Categories.vue"
+import Banners from "~/components/Home/Banners.vue"
 export default {
   components: {
     Products,
-    Categories
+    Categories,
+    Banners
   },
   data() {
     return {
