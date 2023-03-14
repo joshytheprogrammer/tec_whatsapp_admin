@@ -26,7 +26,7 @@
         {{ props.row.id }}
       </b-table-column>
 
-      <b-table-column field="name" label="Name" sortable v-slot="props">
+      <b-table-column field="name" label="Name" sortable searchable v-slot="props">
         {{ props.row.name }}
       </b-table-column>
 

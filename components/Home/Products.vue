@@ -29,7 +29,7 @@
         {{ props.row.id }}
       </b-table-column>
 
-      <b-table-column field="name" label="Name" width="450" sortable v-slot="props">
+      <b-table-column field="name" label="Name" width="450" searchable sortable v-slot="props">
         {{ props.row.name }}
       </b-table-column>
 
