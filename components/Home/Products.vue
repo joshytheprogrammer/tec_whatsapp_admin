@@ -40,7 +40,7 @@
 
       <b-table-column field="actions" label="Slug" centered v-slot="props">
         <div class="actions">
-          <span><a target="_blank" :href="'https://neasfashion.demo.joshytheprogrammer.com/shop/'+props.row.slug">View</a></span>
+          <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/shop/'+props.row.slug">View</a></span>
         </div>
       </b-table-column>
 
@@ -74,12 +74,12 @@ export default {
       this.loading = true
       await this.$fire.firestore.collection('products').orderBy('name').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          this.data.push({id: doc.id, image: doc.data().image, name: doc.data().name, price: doc.data().price, slug: doc.data().slug})
+          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name, price: doc.data().price, slug: doc.data().slug})
         })
         this.loading = false
       })
     } catch (error) {
-      thus.loading = false
+      this.loading = false
       this.$buefy.toast.open({
         duration: 5000,
         message: `Something went wrong - ${error}`,
