@@ -26,12 +26,16 @@
         {{ props.row.id }}
       </b-table-column>
 
-      <b-table-column field="name" label="Name" sortable searchable v-slot="props">
+      <b-table-column field="name" width="300"  label="Name" sortable searchable v-slot="props">
         {{ props.row.name }}
       </b-table-column>
 
-      <b-table-column field="image" label="Image" v-slot="props">
+      <b-table-column field="image" width="150"  label="Image" v-slot="props">
         <img :src="props.row.image" :alt="props.row.name + ' image'">
+      </b-table-column>
+
+      <b-table-column field="active" label="Active" sortable v-slot="props">
+        {{ props.row.active }}
       </b-table-column>
 
       <b-table-column field="actions" label="Actions" centered v-slot="props">

@@ -41,6 +41,10 @@
         {{ props.row.price }}
       </b-table-column>
 
+      <b-table-column field="active" label="Active" sortable v-slot="props">
+        {{ props.row.active }}
+      </b-table-column>
+
       <b-table-column field="actions" label="Actions" centered v-slot="props">
         <div class="actions">
           <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/shop/'+props.row.slug">View</a></span>
