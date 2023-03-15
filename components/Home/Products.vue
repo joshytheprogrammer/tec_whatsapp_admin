@@ -19,7 +19,7 @@
       aria-page-label="Page"
       aria-current-label="Current page"
       sticky-header
-      height = "400px"
+      height = "380px"
       :page-input="hasInput"
       :pagination-order="paginationOrder"
       :page-input-position="inputPosition"

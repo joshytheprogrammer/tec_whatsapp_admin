@@ -40,7 +40,6 @@
           <span><NuxtLink :to="'/edit/category/'+props.row.id">Edit</NuxtLink></span>
         </div>
       </b-table-column>
-      <!-- '#'item.id+ -->
     </b-table>
   </section>
 </template>
