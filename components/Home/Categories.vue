@@ -75,7 +75,7 @@ export default {
 
       await this.$fire.firestore.collection('categories').orderBy('name').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name})
+          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name, active: doc.data().active})
         })
 
         this.loading = false

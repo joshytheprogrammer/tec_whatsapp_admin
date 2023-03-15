@@ -82,7 +82,7 @@ export default {
       this.loading = true
       await this.$fire.firestore.collection('products').orderBy('name').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name, price: doc.data().price, slug: doc.data().slug})
+          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name, price: doc.data().price, slug: doc.data().slug, active: doc.data().active})
         })
         this.loading = false
       })
