@@ -41,7 +41,7 @@
         {{ props.row.price }}
       </b-table-column>
 
-      <b-table-column field="active" label="Active" sortable v-slot="props">
+      <b-table-column field="live" label="Live" sortable v-slot="props">
         {{ props.row.active }}
       </b-table-column>
 
@@ -50,8 +50,8 @@
           <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/shop/'+props.row.slug">View</a></span>
           <span><NuxtLink :to="'/edit/product/'+props.row.id">Edit</NuxtLink></span>
           <span>
-            <a v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
-            <a v-else @click.prevent="toggleActive(props.row.id, props.row.active)">Show</a>
+            <a title="Hide product" v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
+            <a title="Show Product" v-else @click.prevent="toggleActive(props.row.id, props.row.active)">Show</a>
           </span>
         </div>
       </b-table-column>

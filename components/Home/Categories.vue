@@ -34,7 +34,7 @@
         <img :src="props.row.image" :alt="props.row.name + ' image'">
       </b-table-column>
 
-      <b-table-column field="active" label="Active" sortable v-slot="props">
+      <b-table-column field="live" label="Live" sortable v-slot="props">
         {{ props.row.active }}
       </b-table-column>
 
@@ -43,8 +43,8 @@
           <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/#'+props.row.id">View</a></span>
           <span><NuxtLink :to="'/edit/category/'+props.row.id">Edit</NuxtLink></span>
           <span>
-            <a v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
-            <a v-else @click.prevent="toggleActive(props.row.id, props.row.active)">Show</a>
+            <a title="Hide product" v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
+            <a title="Show product" v-else @click.prevent="toggleActive(props.row.id, props.row.active)">Show</a>
           </span>
         </div>
       </b-table-column>

@@ -26,7 +26,7 @@
 
       <p v-if="loading">Fetching product details...</p>
 
-      <b-button native-type="submit" type="is-primary" :loading="loading">Submit</b-button>
+      <b-button native-type="submit" type="is-primary" :loading="loading">Save</b-button>
     </form>
   </section>
 </template>
