@@ -48,6 +48,7 @@ export default {
       await this.$fire.firestore.collection('categories').doc(this.$route.params.id).set({
         name: this.category.name,
         slug: slug,
+        active: true,
       }, { merge: true })
       .then(() => {
         this.successMessage('Document changed successfully')

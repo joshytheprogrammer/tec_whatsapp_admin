@@ -88,6 +88,7 @@ export default {
         name: this.product.name,
         price: this.product.price,
         slug: slug,
+        active: true,
         categories: this.product.categories
       }, { merge: true })
       .then(() => {
