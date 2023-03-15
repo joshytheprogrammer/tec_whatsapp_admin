@@ -38,6 +38,10 @@
         <div class="actions">
           <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/#'+props.row.id">View</a></span>
           <span><NuxtLink :to="'/edit/category/'+props.row.id">Edit</NuxtLink></span>
+          <span>
+            <a v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
+            <a v-else @click.prevent="toggleActive(props.row.id, props.row.active)">Show</a>
+          </span>
         </div>
       </b-table-column>
     </b-table>
@@ -83,6 +87,36 @@ export default {
         message: `Something went wrong - ${error}`,
         type: 'is-danger'
       })
+    }
+  },
+  methods: {
+    async toggleActive(id, active) {
+      active = !active
+      this.loading = true
+
+      await this.$fire.firestore.collection('categories').doc(id).set({
+        active: active
+      }, { merge: true })
+      .then(() => {
+        this.$buefy.toast.open({
+          duration: 10000,
+          message: 'Operation successful',
+          type: 'is-success'
+        })
+        this.data = []
+        this.loading = false
+        this.$fetch()
+      })
+      .catch((error) => {
+        this.$buefy.toast.open({
+          duration: 5000,
+          message: `Something went wrong - ${error}`,
+          type: 'is-danger'
+        })
+
+        this.loading = false
+      })
+
     }
   }
 }
