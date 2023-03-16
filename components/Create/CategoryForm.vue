@@ -53,6 +53,7 @@ export default {
       await this.$fire.firestore.collection('categories').add({
         name: this.category.name,
         slug: slug,
+        active: true,
         thumbnail: this.category.image,
       })
       .then((docRef) => {

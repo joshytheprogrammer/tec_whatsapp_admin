@@ -98,6 +98,7 @@ export default {
         price: this.product.price,
         thumbnail: this.product.image,
         slug: slug,
+        active: true,
         categories: this.product.categories
       })
       .then(() => {
