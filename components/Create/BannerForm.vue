@@ -3,7 +3,7 @@
     <h1 class="subtitle is-size-3">Create new banner</h1>
     <form @submit.prevent="submit" class="form">
       <b-field label="Name">
-        <b-input v-model="banner.name" placeholder="Enter the product name" validation-message="Only letters, numbers and apostrophes are allowed" pattern="^[a-zA-Z 0-9 ']*$" :disabled="loading" required></b-input>
+        <b-input v-model="banner.name" placeholder="Enter the banner name" validation-message="Only letters, numbers and apostrophes are allowed" pattern="^[a-zA-Z 0-9 ']*$" :disabled="loading" required></b-input>
       </b-field>
       <b-field label="Device">
         <b-radio v-model="banner.isMobile"
@@ -68,7 +68,7 @@ export default {
       .then((docRef) => {
         this.$buefy.toast.open({
           duration: 10000,
-          message: `Category created with ID - ${docRef.id} `,
+          message: `Banner created with ID - ${docRef.id} `,
           type: 'is-success'
         })
 
