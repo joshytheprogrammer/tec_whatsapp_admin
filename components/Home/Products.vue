@@ -53,6 +53,10 @@
             <a title="Hide product" v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
             <a title="Show Product" v-else @click.prevent="toggleActive(props.row.id, props.row.active)">Show</a>
           </span>
+          <span>
+            <a title="Hide product" v-if="props.row.starred" @click.prevent="toggleStar(props.row.id, props.row.starred)">Unstar</a>
+            <a title="Show Product" v-else @click.prevent="toggleStar(props.row.id, props.row.starred)">Star</a>
+          </span>
         </div>
       </b-table-column>
 
@@ -86,7 +90,7 @@ export default {
       this.loading = true
       await this.$fire.firestore.collection('products').orderBy('name').get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name, price: doc.data().price, slug: doc.data().slug, active: doc.data().active})
+          this.data.push({id: doc.id, image: doc.data().thumbnail, name: doc.data().name, price: doc.data().price, slug: doc.data().slug, active: doc.data().active, starred: doc.data().recommended})
         })
         this.loading = false
       })
@@ -106,6 +110,34 @@ export default {
 
       await this.$fire.firestore.collection('products').doc(id).set({
         active: active
+      }, { merge: true })
+      .then(() => {
+        this.$buefy.toast.open({
+          duration: 10000,
+          message: 'Operation successful',
+          type: 'is-success'
+        })
+        this.data = []
+        this.loading = false
+        this.$fetch()
+      })
+      .catch((error) => {
+        this.$buefy.toast.open({
+          duration: 5000,
+          message: `Something went wrong - ${error}`,
+          type: 'is-danger'
+        })
+
+        this.loading = false
+      })
+
+    },
+    async toggleStar(id, starred) {
+      starred = !starred
+      this.loading = true
+
+      await this.$fire.firestore.collection('products').doc(id).set({
+        recommended: starred
       }, { merge: true })
       .then(() => {
         this.$buefy.toast.open({
