@@ -47,7 +47,7 @@
 
       <b-table-column field="actions" label="Actions" centered v-slot="props">
         <div class="actions">
-          <span><a target="_blank" :href="'https://tec.demo.joshytheprogrammer.com/shop/'+props.row.slug">View</a></span>
+          <span><a target="_blank" :href="'https://tecpastryworld.com/shop/'+props.row.slug">View</a></span>
           <span><NuxtLink :to="'/edit/product/'+props.row.id">Edit</NuxtLink></span>
           <span>
             <a title="Hide product" v-if="props.row.active" @click.prevent="toggleActive(props.row.id, props.row.active)">Hide</a>
